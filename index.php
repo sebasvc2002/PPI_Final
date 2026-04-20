@@ -20,7 +20,7 @@
     <?php 
         require_once 'php/header.php';
         require_once 'php/db.php';
-        $result=$mysqli->query('SELECT')
+        //$result=$mysqli->query('SELECT');
      ?>
     <section class='hero-section'>
         <div class="container mb-5">
