@@ -26,7 +26,7 @@
         <div class="container mb-5">
             <h1 class="hero-title font-playfair mb-4">Postres Artesanales</h1>
             <p class="lead mb-5 fs-4">Horneados diariamente con ingredientes auténticos</p>
-            <a href="#menu" class="btn btn-accent btn-lg shadow">Explora Nuestro Menu</a>
+            <a href="menu.php" class="btn btn-accent btn-lg shadow">Explora Nuestro Menu</a>
         </div>
     </section>
 

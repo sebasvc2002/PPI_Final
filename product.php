@@ -22,7 +22,7 @@ require_once 'php/header.php';
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if($id===0){
-    echo "<div class='container py-5 text-center'><h2>Producto no encontrado.</h2><a href='index.php' class='btn btn-accent mt-3'>Regresar a Menú</a></div>";
+    echo "<div class='container py-5 text-center'><h2>Producto no encontrado.</h2><a href='menu.php' class='btn btn-accent mt-3'>Regresar a Menú</a></div>";
     require_once 'php/footer.php';
     exit;
 }
@@ -36,7 +36,7 @@ $imageData=base64_encode($product['image']);
 $src='data:image/jpeg;base64,' . $imageData;
 
 if(!$product){
-    echo "<div class='container py-5 text-center'><h2>Producto no encontrado.</h2><a href='index.php' class='btn btn-accent mt-3'>Regresar a Menú</a></div>";
+    echo "<div class='container py-5 text-center'><h2>Producto no encontrado.</h2><a href='menu.php' class='btn btn-accent mt-3'>Regresar a Menú</a></div>";
     require_once 'php/footer.php';
     exit;
 }
