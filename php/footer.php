@@ -3,13 +3,14 @@
         <div class="row text-center text-md-start">
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-accent font-playfair">Las Delicias Hôrneadas</h5>
-                <p>Bringing you the finest French pastries, made with love and the best ingredients daily.</p>
+                <p>Los mejores postres horneados hechos con los mejores ingredientes.</p>
             </div>
 
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                <h5 class="text-uppercase mb-4 font-weight-bold text-accent">Quick Links</h5>
-                <p><a href="/index.php" class="text-white text-decoration-none slide-link">Menu</a></p>
-                <p><a href="/cart.php" class="text-white text-decoration-none slide-link">Cart</a></p>
+                <h5 class="text-uppercase mb-4 font-weight-bold text-accent">Links</h5>
+                <p><a href="index.php" class="text-white text-decoration-none slide-link">Inicio</a></p>
+                <p><a href="menu.php" class="text-white text-decoration-none slide-link">Menu</a></p>
+                <p><a href="carrito.php" class="text-white text-decoration-none slide-link">Cart</a></p>
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
