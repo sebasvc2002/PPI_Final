@@ -64,21 +64,21 @@
                 <div class="col-md-6 p-5 bg-white">
                     <h1 class="font-playfair fs-1">Registro</h1>
                     
-                    <form action="login.php" method="POST">
+                    <form action="php/signin.php" method="POST">
                         <div class="mb-4">
                             <label class="form-label small text-secondary">Nombre Completo</label>
-                            <input type="text" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="Juan Perez" required>
+                            <input type="text" id="name" name="name" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="Juan Perez" required>
                         </div>
                         <div class="mb-4">
                             <label class="form-label small text-secondary">Correo Electrónico</label>
-                            <input type="email" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="ejemplo@mail.com" required>
+                            <input type="email" id="email" name="email" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="ejemplo@mail.com" required>
                         </div>
                         
                         <div class="mb-4">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label small text-secondary">Contraseña</label>
                             </div>
-                            <input type="password" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
+                            <input type="password" id="password" name="password" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
                         </div>
 
                         <button type="submit" class="btn-accent w-100 mt-3 py-3">Registrarse</button>
