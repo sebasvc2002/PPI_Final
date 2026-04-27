@@ -7,7 +7,7 @@ $errors=[
 $activeForm=$_SESSION['active_form'] ?? 'login';
 session_unset();
 function showError($error){
-    return !empty($error) ? "<div class='alert alert-danger'>$error</div>" : '';
+    return !empty($error) ? "<div class='alert alert-danger alert-dismissible fade show'>$error<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button></div>" : '';
 }
 function isActiveForm($formName,$activeForm){
     return $formName === $activeForm ? 'active' : '';
