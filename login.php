@@ -51,7 +51,7 @@ function isActiveForm($formName,$activeForm){
                             <div class="d-flex justify-content-between">
                                 <label class="form-label small text-secondary">Contraseña</label>
                             </div>
-                            <input type="password" name="pasword" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
+                            <input type="password" name="password" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
                         </div>
 
                         <button type="submit" name="login" class="btn-accent w-100 mt-3 py-3">Iniciar Sesión</button>
