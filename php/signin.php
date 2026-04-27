@@ -13,7 +13,7 @@ if (isset($_POST['register'])){
     } else {
         $mysqli->query("INSERT INTO users (name, email, password_hash, card_number) VALUES ('$name','$email','$password',0)");
     }
-    header("Location: ./index.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -25,16 +25,18 @@ if (isset($_POST['login'])){
         $user=$result->fetch_assoc();
         if(password_verify($plain_password,$user['password_hash'])){
             $_SESSION['user_id']=$user['id'];
-            if ($user['id']===1){
-                header("Location: ./admin.php");
+            if ($user['id'] == 1){
+                header("Location: ../admin.php");
             } else{
-                header("Location: ./account.php");
+                header("Location: ../account.php");
             }
             exit();
         }
     }
-    $_SESSION['register_error'] = 'Correo electrónico o contraseña incorrectos';
-    $_SESSION['active_form'] = 'register';
+    $_SESSION['login_error'] = 'Correo electrónico o contraseña incorrectos';
+    $_SESSION['active_form'] = 'login';
+    header("Location: ../login.php");
+    exit();
 }
 
 ?>
