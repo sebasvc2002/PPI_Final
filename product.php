@@ -17,7 +17,7 @@
 <body>
 <?php
 require_once 'php/db.php';
-require_once 'php/header.php';
+require_once 'layout/header.php';
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if($id===0){
@@ -69,7 +69,7 @@ if(!$product){
 </div>
 
 <?php
-require_once 'php/footer.php'
+require_once 'layout/footer.php'
 ?>
 </body>
 </html>

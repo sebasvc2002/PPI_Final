@@ -30,7 +30,7 @@
 </head>
 <body>
     <?php 
-        require_once 'php/header.php';
+        require_once 'layout/header.php';
         require_once 'php/db.php';
 
         //Obtener las categorías de la base de datos
@@ -108,6 +108,6 @@
         </div>
     </div>
 
-    <?php require_once 'php/footer.php'; ?>
+    <?php require_once 'layout/footer.php'; ?>
 </body>
 </html>

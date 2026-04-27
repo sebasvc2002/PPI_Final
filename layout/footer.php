@@ -10,7 +10,7 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold text-accent">Links</h5>
                 <p><a href="index.php" class="text-white text-decoration-none slide-link">Inicio</a></p>
                 <p><a href="menu.php" class="text-white text-decoration-none slide-link">Menu</a></p>
-                <p><a href="carrito.php" class="text-white text-decoration-none slide-link">Cart</a></p>
+                <p><a href="cart.php" class="text-white text-decoration-none slide-link">Cart</a></p>
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">

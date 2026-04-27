@@ -16,7 +16,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-cart fs-5 text-white"></i> Carrito</a></li>
                     <li class="nav-item"><a href="login.php" class="nav-link"><i class="bi bi-person-fill fs-5 text-white"></i> Cuenta</a></li>
-                    <li class="nav-item"><a href="" class="nav-link"></a></li>
+                    <li class="nav-item"><a href="cart.php" class="nav-link"></a></li>
                 </ul>
             </div>
         </div>

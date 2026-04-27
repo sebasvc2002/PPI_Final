@@ -1,3 +1,7 @@
+<?php require_once 'php/db.php';
+$result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 5;");
+$products = $result->fetch_all(MYSQLI_ASSOC);
+ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,12 +20,7 @@
     <title>Las Delicias Horneadas</title>
 </head>
 <body>
-    <?php 
-        require_once 'php/header.php';
-        require_once 'php/db.php';
-        $result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 5;");
-        $products = $result->fetch_all(MYSQLI_ASSOC);
-     ?>
+    <?php require_once 'layout/header.php';?>
     <section class='hero-section'>
         <div class="container mb-5">
             <h1 class="hero-title font-playfair mb-4">Postres Artesanales</h1>
@@ -61,6 +60,6 @@
     <?php endif; ?>
     </div>
     </div>
-    <?php require_once 'php/footer.php'; ?>
+    <?php require_once 'layout/footer.php'; ?>
 </body>
 </html>
