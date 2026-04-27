@@ -1,3 +1,4 @@
+<?php require_once 'php/db.php'; ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -92,9 +93,7 @@
     </style>
 </head>
 <body>
-    <?php 
-        require_once 'php/header.php';
-        require_once 'php/db.php'; ?>
+    <?php require_once 'layout/header.php'; ?>
         <main class="container my-5 main-content">
             <div class="mb-5">
                 <h1 class="display-4 mb-2 font-playfair">Carrito</h1>
@@ -184,6 +183,6 @@
     </main>
 
 
-    <?php require_once 'php/footer.php'; ?>
+    <?php require_once 'layout/footer.php'; ?>
 </body>
 </html>

@@ -16,7 +16,7 @@
      <script src="js/login.js"></script>
 </head>
 <body>
-    <?php include 'php/header.php'; ?>
+    <?php include 'layout/header.php'; ?>
 
     
     <main class="main-content d-flex align-items-center justify-content-center py-5">
@@ -95,6 +95,6 @@
         </div>
     </main>
 
-<?php include 'php/footer.php'; ?>
+<?php include 'layout/footer.php'; ?>
 </body>
 </html>

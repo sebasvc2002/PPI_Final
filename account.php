@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <?php require_once 'php/header.php'; ?>
+    <?php require_once 'layout/header.php'; ?>
 
     <main class="main-content py-5">
         <div class="container">
@@ -79,6 +79,6 @@
         </div>
     </main>
 
-    <?php require_once 'php/footer.php'; ?>
+    <?php require_once 'layout/footer.php'; ?>
 </body>
 </html>
