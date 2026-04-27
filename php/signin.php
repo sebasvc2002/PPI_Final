@@ -18,4 +18,11 @@ if (isset($_POST[''])){
     header("Location: ./index.php");
     exit();
 }
+
+if (isset($_POST[''])){
+    $email=mysqli_real_escape_string($mysqli,$_POST['email']);
+    $password=password_hash($_POST['password'],PASSWORD_DEFAULT);
+
+}
+
 ?>
