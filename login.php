@@ -39,7 +39,7 @@
                             <input type="password" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
                         </div>
 
-                        <button type="submit" class="btn-accent w-100 mt-3 py-3">Iniciar Sesión</button>
+                        <button type="submit" name="login" class="btn-accent w-100 mt-3 py-3">Iniciar Sesión</button>
                     </form>
 
                     <p class="text-center mt-4 small text-muted">
@@ -81,7 +81,7 @@
                             <input type="password" id="password" name="password" class="form-control border-0 border-bottom rounded-0 px-0" placeholder="*********" required>
                         </div>
 
-                        <button type="submit" class="btn-accent w-100 mt-3 py-3">Registrarse</button>
+                        <button type="submit" name="register" class="btn-accent w-100 mt-3 py-3">Registrarse</button>
                     </form>
 
                     <p class="text-center mt-4 small text-muted">

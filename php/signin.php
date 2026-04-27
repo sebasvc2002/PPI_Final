@@ -1,4 +1,4 @@
-<!-- No funcional todavia] -->
+<!-- No funcional todavia -->
 
 <?php
 session_start();
