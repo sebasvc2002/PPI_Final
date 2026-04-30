@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'layout/header.php';
 $errors=[
     'login' => $_SESSION['login_error']?? '',
     'register' => $_SESSION['register_error'] ?? ''
@@ -12,28 +13,7 @@ function showError($error){
 function isActiveForm($formName,$activeForm){
     return $formName === $activeForm ? 'active' : '';
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Las Delicias Horneadas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Login JS -->
-     <script src="js/login.js"></script>
-</head>
-<body>
-    <?php include 'layout/header.php'; ?>
-
-    
+?>    
     <main class="main-content d-flex align-items-center justify-content-center py-5">
         <div class="container form <?=isActiveForm('login',$activeForm);?>" id="login-form">
             <div class="row g-0 product-card mx-auto overflow-hidden" style="max-width: 900px;">
@@ -108,6 +88,7 @@ function isActiveForm($formName,$activeForm){
 
             </div>
         </div>
+        <script src="js/login.js"></script>
     </main>
 
 <?php include 'layout/footer.php'; ?>
