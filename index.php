@@ -1,6 +1,8 @@
 <?php
+$title="Las delicias Horneadas";
 require_once 'php/db.php';
-include 'layout/header.php';
+require 'layout/header.php';
+
 $result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 5;");
 $products = $result->fetch_all(MYSQLI_ASSOC);
  ?>

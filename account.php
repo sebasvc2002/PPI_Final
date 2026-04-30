@@ -1,4 +1,7 @@
-<?php include 'layout/header.php'; ?>
+
+<?php
+$title="Cuenta - Las Delicias Horneadas";
+include 'layout/header.php'; ?>
 
     <main class="main-content py-5">
         <div class="container">

@@ -1,7 +1,8 @@
-<?php 
-        include 'layout/header.php';
+<?php
         require_once 'php/db.php';
-
+        $title="Menu - Las Delicias Horneadas";
+        include 'layout/header.php';
+        
         //Obtener las categorías de la base de datos
         $cat_result = $mysqli->query("SELECT id, name FROM categories ORDER BY id ASC");
         $categories = $cat_result->fetch_all(MYSQLI_ASSOC);

@@ -1,4 +1,5 @@
 <?php require_once 'php/db.php';
+$title="Carrito - Las Delicias Horneadas";
 include 'layout/header.php';
 ?>
     <style>

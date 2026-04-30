@@ -1,5 +1,6 @@
 <?php
 session_start();
+$title="Iniciar Sesión - Las Delicias Horneadas";
 include 'layout/header.php';
 $errors=[
     'login' => $_SESSION['login_error']?? '',
