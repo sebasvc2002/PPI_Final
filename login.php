@@ -17,7 +17,7 @@ function isActiveForm($formName,$activeForm){
 ?>    
     <main class="main-content d-flex align-items-center justify-content-center py-5">
         <div class="container form <?=isActiveForm('login',$activeForm);?>" id="login-form">
-            <div class="row g-0 product-card mx-auto overflow-hidden" style="max-width: 900px;">
+            <div class="row g-0 login-card mx-auto overflow-hidden" style="max-width: 900px;">
                 
                 <div class="col-md-6 p-5 bg-white">
                     <h1 class="font-playfair fs-1">Iniciar Sesión</h1>
@@ -51,7 +51,7 @@ function isActiveForm($formName,$activeForm){
         </div>
 
         <div class="container form <?=isActiveForm('register',$activeForm);?>" id="register-form">
-            <div class="row g-0 product-card mx-auto overflow-hidden" style="max-width: 900px;">
+            <div class="row g-0 login-card mx-auto overflow-hidden" style="max-width: 900px;">
                 
                 <div class="col-md-6 d-none d-md-block position-relative bg-primary">
                     <img src="img/register-baker.jpg" class="w-100 h-100 object-fit-cover opacity-75" alt="Bakery">
