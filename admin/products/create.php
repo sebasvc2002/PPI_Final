@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Nuevo Producto';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 // Dropdowns
 $categories = $mysqli->query("SELECT id, name FROM categories ORDER BY name")->fetch_all(MYSQLI_ASSOC);
@@ -37,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($category_id === 0)  $errors[] = 'Selecciona una categoría.';
     if ($supplier_id === 0)  $errors[] = 'Selecciona un proveedor.';
 
-// Image BLOB
+    // Image BLOB
     $image_data = null;
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
@@ -65,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 }
+
+require '../../layout/admin_header.php';
 ?>
 
 <div class="admin-page-title admin-fade-in">
