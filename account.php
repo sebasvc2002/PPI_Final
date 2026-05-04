@@ -5,7 +5,50 @@ if(!isset($_SESSION['user_id'])){
     exit();
 }
 $title="Cuenta - Las Delicias Horneadas";
-include 'layout/header.php'; ?>
+include 'layout/header.php';
+
+$user_id = (int) $_SESSION['user_id'];
+
+// Active tab from query param or default
+$active_tab = $_GET['tab'] ?? 'profile';
+if (!in_array($active_tab, ['profile', 'addresses', 'orders'])) {
+    $active_tab = 'profile';
+}
+
+// Load user data
+$stmt = $mysqli->prepare("SELECT name, email, card_number FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$user = $stmt->get_result()->fetch_assoc();
+
+// Masked card number
+$card_display = '';
+if (!empty($user['card_number']) && $user['card_number'] > 0) {
+    $card_str = (string) $user['card_number'];
+    $card_display = '•••• •••• •••• ' . substr($card_str, -4);
+}
+
+// Load addresses
+$stmt = $mysqli->prepare("SELECT id, street, city, country, postal_code FROM user_addresses WHERE user_id = ? ORDER BY id ASC");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$addresses = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Load orders
+$stmt = $mysqli->prepare("SELECT o.id, o.total, o.placed_at, a.street, a.city FROM orders o LEFT JOIN user_addresses a ON a.id = o.address_id WHERE o.user_id = ? ORDER BY o.placed_at DESC");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Flash messages
+$profile_msg = $_SESSION['profile_msg'] ?? '';
+$profile_msg_type = $_SESSION['profile_msg_type'] ?? 'info';
+unset($_SESSION['profile_msg'], $_SESSION['profile_msg_type']);
+
+$address_msg = $_SESSION['address_msg'] ?? '';
+$address_msg_type = $_SESSION['address_msg_type'] ?? 'info';
+unset($_SESSION['address_msg'], $_SESSION['address_msg_type']);
+?>
 
 <main class="main-content py-5">
     <div class="container">

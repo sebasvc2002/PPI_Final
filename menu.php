@@ -12,13 +12,13 @@
 
         //Obtener productos de categoría
         if ($selected_category > 0) {
-            $stmt = $mysqli->prepare("SELECT id, name, price, image FROM products WHERE category_id = ? ORDER BY id DESC");
+            $stmt = $mysqli->prepare("SELECT id, name, price, image, stock FROM products WHERE category_id = ? ORDER BY id DESC");
             $stmt->bind_param("i", $selected_category);
             $stmt->execute();
             $products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         } else {
             //mostrar todas
-            $result = $mysqli->query("SELECT id, name, price, image FROM products ORDER BY id DESC");
+            $result = $mysqli->query("SELECT id, name, price, image, stock FROM products ORDER BY id DESC");
             $products = $result->fetch_all(MYSQLI_ASSOC);
         }
     ?>
@@ -37,6 +37,15 @@
             background-color: var(--accent-color) !important;
             color: white !important;
             box-shadow: 0 4px 6px rgba(226, 167, 111, 0.3);
+        }
+        .quick-add-btn {
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+        }
+        .product-card:hover .quick-add-btn {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
     <section class="hero-menu">
@@ -86,7 +95,29 @@
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title font-playfair fs-4 mb-1"><?= htmlspecialchars($product['name']) ?></h5>
                                 <p class="text-accent fw-bold fs-5 mb-3">$<?= number_format($product['price'], 2) ?></p>
-                                <a href="product.php?id=<?= $product['id'] ?>" class="btn btn-outline-dark w-100 mt-auto rounded-pill">Ver Detalles</a>
+
+                                <div class="mt-auto d-flex flex-column gap-2">
+                                    <a href="product.php?id=<?= $product['id'] ?>" class="btn btn-outline-dark w-100 rounded-pill">Ver Detalles</a>
+
+                                    <?php if ($product['stock'] > 0): ?>
+                                        <?php if (isset($_SESSION['user_id'])): ?>
+                                        <form action="php/cart_actions.php" method="POST" class="quick-add-btn">
+                                            <input type="hidden" name="action" value="add">
+                                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button type="submit" class="btn btn-accent w-100 rounded-pill btn-sm">
+                                                <i class="bi bi-cart-plus me-1"></i>Agregar
+                                            </button>
+                                        </form>
+                                        <?php else: ?>
+                                        <a href="login.php" class="btn btn-accent w-100 rounded-pill btn-sm quick-add-btn text-decoration-none">
+                                            <i class="bi bi-person me-1"></i>Inicia sesión
+                                        </a>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary w-100 py-2">Agotado</span>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>

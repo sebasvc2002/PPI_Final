@@ -2,9 +2,12 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+require_once __DIR__ . '/../php/db.php';
+require_once __DIR__ . '/../php/cart_helper.php';
+$cart_count = getCartItemCount($mysqli);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,8 +38,16 @@ if (session_status() === PHP_SESSION_NONE) {
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a href="" class="nav-link"><i class="bi bi-cart fs-5 text-white"></i> Carrito</a></li>
-                    <li class="nav-item"><a href="cart.php" class="nav-link"></a></li>
+                    <li class="nav-item">
+                        <a href="cart.php" class="nav-link position-relative">
+                            <i class="bi bi-cart fs-5 text-white"></i> Carrito
+                            <?php if ($cart_count > 0): ?>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-accent" style="font-size: 0.65rem;">
+                                <?= $cart_count ?>
+                            </span>
+                            <?php endif; ?>
+                        </a>
+                    </li>
                     <?php if(isset($_SESSION['user_id'])): ?>
                     <li class="nav-item"><a href="account.php" class="nav-link"><i class="bi bi-person-fill fs-5 text-white"></i>Mi Cuenta</a></li>
                     <li class="nav-item"><a href="php/logout.php" class="nav-link"><i class="bi bi-door-closed"></i> Cerrar Sesión</a></li>
