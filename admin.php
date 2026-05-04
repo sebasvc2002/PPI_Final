@@ -93,6 +93,9 @@
             color: white;
             font-weight: 500;
         }
+        .text-accent{
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -100,8 +103,9 @@
     <div class="d-flex">
         <aside class="sidebar d-flex flex-column py-3">
             <div class="text-center mb-4 px-3">
-                <h4 class="text-white font-playfair m-0 pt-2">Admin Panel</h4>
-                <small class="text-accent">Las Delicias Horneadas</small>
+                <h5 class="text-white font-playfair m-0 pt-2">Las Delicias Horneadas</h5>
+                <small class="text-white ">Admin Panel</small>
+                
             </div>
             
             <hr class="text-white mx-3 opacity-25">

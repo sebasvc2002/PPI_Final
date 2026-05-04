@@ -1,26 +1,11 @@
-<?php require_once 'php/db.php';
+<?php
+$title="Las delicias Horneadas";
+require_once 'php/db.php';
+require 'layout/header.php';
+
 $result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 5;");
 $products = $result->fetch_all(MYSQLI_ASSOC);
  ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <title>Las Delicias Horneadas</title>
-</head>
-<body>
-    <?php require_once 'layout/header.php';?>
     <section class='hero-section'>
         <div class="container mb-5">
             <h1 class="hero-title font-playfair mb-4">Postres Artesanales</h1>

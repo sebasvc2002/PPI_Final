@@ -1,16 +1,7 @@
-<?php require_once 'php/db.php'; ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Carrito - Las Delicias Horneadas</title>
+<?php require_once 'php/db.php';
+$title="Carrito - Las Delicias Horneadas";
+include 'layout/header.php';
+?>
     <style>
         .cart-nav-btn {
             font-weight: 500;
@@ -91,9 +82,6 @@
         /* Utilities */
         .fs-7 { font-size: 0.85rem; }
     </style>
-</head>
-<body>
-    <?php require_once 'layout/header.php'; ?>
         <main class="container my-5 main-content">
             <div class="mb-5">
                 <h1 class="display-4 mb-2 font-playfair">Carrito</h1>

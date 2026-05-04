@@ -1,7 +1,10 @@
 :root {
-    --primary-color: #5C3A21; /* Rich chocolate brown */
-    --accent-color: #E2A76F; /* Caramel / Gold */
-    --bg-color: #FAFAFA; /* Off white */
+    --primary-color: #5C3A21;
+    /* Rich chocolate brown */
+    --accent-color: #E2A76F;
+    /* Caramel / Gold */
+    --bg-color: #FAFAFA;
+    /* Off white */
     --text-color: #333333;
 }
 
@@ -10,6 +13,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
 }
+
 .font-playfair {
     font-family: 'Playfair Display', serif;
 }
@@ -33,17 +37,26 @@ body {
     border-radius: 12px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .product-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .product-card .card-img-top {
     height: 250px;
     object-fit: cover;
+}
+
+.login-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* Slide Link Hover */
@@ -52,6 +65,7 @@ body {
     position: relative;
     padding-bottom: 2px;
 }
+
 .slide-link::after {
     content: '';
     position: absolute;
@@ -64,6 +78,7 @@ body {
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
+
 .slide-link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -76,6 +91,7 @@ body {
     padding: 100px 0;
     text-align: center;
 }
+
 .hero-menu {
     background: linear-gradient(rgba(92, 58, 33, 0.8), rgba(92, 58, 33, 0.6)), url('../img/menu-hero.jpg') center/cover no-repeat;
     color: white;
@@ -107,9 +123,11 @@ body {
 .main-content {
     min-height: 70vh;
 }
-.container.form{
+
+.container.form {
     display: none;
 }
-.container.active{
+
+.container.active {
     display: block;
 }
