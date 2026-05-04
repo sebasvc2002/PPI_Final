@@ -3,7 +3,7 @@ $title = 'Productos';
 require_once '../../php/db.php';
 require '../../layout/admin_header.php';
 
-/* ── Handle DELETE ─────────────────────────────────────── */
+// Delete
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     $stmt = $mysqli->prepare("DELETE FROM products WHERE id = ?");
@@ -18,7 +18,7 @@ if (isset($_GET['delete'])) {
     $stmt->close();
 }
 
-/* ── Fetch all products with joins ─────────────────────── */
+// Fetch products
 $query = "SELECT p.id, p.name, p.description, p.price, p.stock, p.image,
                  c.name AS category_name, s.name AS supplier_name
           FROM products p
@@ -29,7 +29,6 @@ $result = $mysqli->query($query);
 $products = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
 ?>
 
-<!-- Page Title -->
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center admin-page-title admin-fade-in">
     <div>
         <h2 class="font-playfair"><i class="bi bi-box-seam me-2 text-muted"></i>Productos</h2>
@@ -49,7 +48,6 @@ $products = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
 </div>
 <?php endif; ?>
 
-<!-- Table Card -->
 <div class="card admin-card admin-fade-in mt-3">
     <div class="card-body p-0">
         <?php if (count($products) === 0): ?>

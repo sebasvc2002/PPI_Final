@@ -29,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!-- Page Title -->
 <div class="admin-page-title admin-fade-in">
     <h2 class="font-playfair"><i class="bi bi-plus-circle me-2 text-muted"></i>Nuevo Proveedor</h2>
     <p class="text-muted mb-0 mt-1">Completa los datos del proveedor</p>

@@ -3,7 +3,7 @@ $title = 'Proveedores';
 require_once '../../php/db.php';
 require '../../layout/admin_header.php';
 
-/* ── Handle DELETE ─────────────────────────────────────── */
+// Delete
 if (isset($_GET['delete'])) {
     $id = (int)$_GET['delete'];
     // Check for linked products
@@ -30,12 +30,10 @@ if (isset($_GET['delete'])) {
     }
 }
 
-/* ── Fetch all suppliers ───────────────────────────────── */
+// Suppliers
 $result = $mysqli->query("SELECT * FROM suppliers ORDER BY id DESC");
 $suppliers = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
 ?>
-
-<!-- Page Title -->
 <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center admin-page-title admin-fade-in">
     <div>
         <h2 class="font-playfair"><i class="bi bi-truck me-2 text-muted"></i>Proveedores</h2>
@@ -46,7 +44,6 @@ $suppliers = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
     </a>
 </div>
 
-<!-- Alert -->
 <?php if (!empty($msg)): ?>
 <div class="alert admin-alert alert-<?= $msg_type ?> alert-dismissible fade show admin-fade-in" role="alert">
     <i class="bi bi-<?= $msg_type === 'success' ? 'check-circle' : 'exclamation-triangle' ?> me-1"></i>
@@ -55,7 +52,6 @@ $suppliers = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
 </div>
 <?php endif; ?>
 
-<!-- Table Card -->
 <div class="card admin-card admin-fade-in mt-3">
     <div class="card-body p-0">
         <?php if (count($suppliers) === 0): ?>

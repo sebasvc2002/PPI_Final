@@ -4,13 +4,12 @@ require_once '../php/db.php';
 require '../layout/admin_header.php';
 ?>
 
-<!-- Page Title -->
 <div class="admin-page-title admin-fade-in">
     <h2 class="font-playfair"><i class="bi bi-speedometer2 me-2 text-muted"></i>Dashboard</h2>
-    <p class="text-muted mb-0 mt-1">Resumen general de tu tienda</p>
+    <p class="text-muted mb-0 mt-1">Resumen general</p>
 </div>
 
-<!-- ── Stat Cards ──────────────────────────────────────── -->
+<!-- Stats -->
 <div class="row g-3 g-md-4 mb-4 mb-md-5 admin-fade-in mt-1">
     <div class="col-6 col-xl-3">
         <div class="card admin-stat-card h-100 p-3">
@@ -66,7 +65,7 @@ require '../layout/admin_header.php';
     </div>
 </div>
 
-<!-- ── Quick-access panels ─────────────────────────────── -->
+<!-- Paneles -->
 <div class="row g-3 g-md-4 admin-fade-in">
     <div class="col-md-4">
         <div class="card admin-card h-100">

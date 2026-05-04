@@ -6,7 +6,7 @@ require '../../layout/admin_header.php';
 $errors = [];
 $id = (int)($_GET['id'] ?? 0);
 
-/* ── Fetch existing product ────────────────────────────── */
+// Fetch existing 
 $stmt = $mysqli->prepare("SELECT * FROM products WHERE id = ?");
 $stmt->bind_param('i', $id);
 $stmt->execute();
@@ -19,7 +19,7 @@ if (!$prod) {
     exit;
 }
 
-/* ── Load dropdowns ────────────────────────────────────── */
+// Dropdowns
 $categories = $mysqli->query("SELECT id, name FROM categories ORDER BY name")->fetch_all(MYSQLI_ASSOC);
 $suppliers  = $mysqli->query("SELECT id, name FROM suppliers  ORDER BY name")->fetch_all(MYSQLI_ASSOC);
 
@@ -30,7 +30,7 @@ $stock       = $prod['stock'];
 $category_id = $prod['category_id'];
 $supplier_id = $prod['supplier_id'];
 
-/* ── Handle UPDATE ─────────────────────────────────────── */
+// Update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name        = trim($_POST['name'] ?? '');
     $description = trim($_POST['description'] ?? '');
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($category_id === 0)  $errors[] = 'Selecciona una categoría.';
     if ($supplier_id === 0)  $errors[] = 'Selecciona un proveedor.';
 
-    /* Optional new image */
+    // New image
     $has_new_image = isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK;
     $image_data = null;
     if ($has_new_image) {
@@ -80,7 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!-- Page Title -->
 <div class="admin-page-title admin-fade-in">
     <h2 class="font-playfair"><i class="bi bi-pencil-square me-2 text-muted"></i>Editar Producto</h2>
     <p class="text-muted mb-0 mt-1">Modificar «<?= htmlspecialchars($prod['name']) ?>»</p>
@@ -102,20 +101,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="card-body p-3 p-md-4">
         <form method="POST" enctype="multipart/form-data" class="admin-form">
             <div class="row g-3">
-                <!-- Name -->
+
                 <div class="col-12">
                     <label for="name" class="form-label">Nombre del producto</label>
                     <input type="text" class="form-control" id="name" name="name"
                            value="<?= htmlspecialchars($name) ?>" required autofocus>
                 </div>
 
-                <!-- Description -->
                 <div class="col-12">
                     <label for="description" class="form-label">Descripción</label>
                     <textarea class="form-control" id="description" name="description" rows="3"><?= htmlspecialchars($description) ?></textarea>
                 </div>
 
-                <!-- Price & Stock -->
                 <div class="col-sm-6">
                     <label for="price" class="form-label">Precio ($)</label>
                     <input type="number" class="form-control" id="price" name="price" step="0.01" min="0"
@@ -127,7 +124,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            value="<?= htmlspecialchars($stock) ?>" required>
                 </div>
 
-                <!-- Category & Supplier -->
                 <div class="col-sm-6">
                     <label for="category_id" class="form-label">Categoría</label>
                     <select class="form-select" id="category_id" name="category_id" required>
@@ -151,7 +147,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </select>
                 </div>
 
-                <!-- Current image preview + new upload -->
                 <div class="col-12">
                     <?php if (!empty($prod['image'])): ?>
                     <label class="form-label d-block">Imagen actual</label>

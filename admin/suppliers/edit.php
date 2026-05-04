@@ -6,7 +6,7 @@ require '../../layout/admin_header.php';
 $errors = [];
 $id = (int)($_GET['id'] ?? 0);
 
-/* ── Fetch existing supplier ───────────────────────────── */
+// Fetch supplier
 $stmt = $mysqli->prepare("SELECT * FROM suppliers WHERE id = ?");
 $stmt->bind_param('i', $id);
 $stmt->execute();
@@ -23,7 +23,7 @@ $name         = $sup['name'];
 $contact_name = $sup['contact_name'] ?? '';
 $phone        = $sup['phone'] ?? '';
 
-/* ── Handle UPDATE ─────────────────────────────────────── */
+// Update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name         = trim($_POST['name'] ?? '');
     $contact_name = trim($_POST['contact_name'] ?? '');
@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!-- Page Title -->
 <div class="admin-page-title admin-fade-in">
     <h2 class="font-playfair"><i class="bi bi-pencil-square me-2 text-muted"></i>Editar Proveedor</h2>
     <p class="text-muted mb-0 mt-1">Modificar «<?= htmlspecialchars($sup['name']) ?>»</p>
