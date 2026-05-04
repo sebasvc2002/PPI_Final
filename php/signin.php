@@ -26,7 +26,7 @@ if (isset($_POST['login'])){
         if(password_verify($plain_password,$user['password_hash'])){
             $_SESSION['user_id']=$user['id'];
             if ($user['id'] == 1){
-                header("Location: ../admin.php");
+                header("Location: ../admin/index.php");
             } else{
                 header("Location: ../account.php");
             }

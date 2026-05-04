@@ -1,4 +1,12 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    header("Location: ../../index.php");
+    exit();
+}elseif($_SESSION['user_id']!=1){
+    header("Location: ../../index.php");
+    exit();
+}
 $title = 'Nueva Categoría';
 require_once '../../php/db.php';
 require '../../layout/admin_header.php';
