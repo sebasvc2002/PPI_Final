@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Editar Producto';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 $errors = [];
 $id = (int)($_GET['id'] ?? 0);
@@ -21,70 +20,74 @@ $stmt->execute();
 $prod = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-if (!$prod) {
-    echo '<div class="alert admin-alert alert-danger mt-4">Producto no encontrado.</div>';
-    require '../../layout/admin_footer.php';
-    exit;
-}
-
 // Dropdowns
 $categories = $mysqli->query("SELECT id, name FROM categories ORDER BY name")->fetch_all(MYSQLI_ASSOC);
 $suppliers  = $mysqli->query("SELECT id, name FROM suppliers  ORDER BY name")->fetch_all(MYSQLI_ASSOC);
 
-$name        = $prod['name'];
-$description = $prod['description'];
-$price       = $prod['price'];
-$stock       = $prod['stock'];
-$category_id = $prod['category_id'];
-$supplier_id = $prod['supplier_id'];
+if ($prod) {
+    $name        = $prod['name'];
+    $description = $prod['description'];
+    $price       = $prod['price'];
+    $stock       = $prod['stock'];
+    $category_id = $prod['category_id'];
+    $supplier_id = $prod['supplier_id'];
 
-// Update
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name        = trim($_POST['name'] ?? '');
-    $description = trim($_POST['description'] ?? '');
-    $price       = $_POST['price'] ?? '';
-    $stock       = $_POST['stock'] ?? '';
-    $category_id = (int)($_POST['category_id'] ?? 0);
-    $supplier_id = (int)($_POST['supplier_id'] ?? 0);
+    // Update
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name        = trim($_POST['name'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $price       = $_POST['price'] ?? '';
+        $stock       = $_POST['stock'] ?? '';
+        $category_id = (int)($_POST['category_id'] ?? 0);
+        $supplier_id = (int)($_POST['supplier_id'] ?? 0);
 
-    if ($name === '')        $errors[] = 'El nombre es obligatorio.';
-    if ($price === '' || $price < 0) $errors[] = 'Precio inválido.';
-    if ($stock === '' || $stock < 0) $errors[] = 'Stock inválido.';
-    if ($category_id === 0)  $errors[] = 'Selecciona una categoría.';
-    if ($supplier_id === 0)  $errors[] = 'Selecciona un proveedor.';
+        if ($name === '')        $errors[] = 'El nombre es obligatorio.';
+        if ($price === '' || $price < 0) $errors[] = 'Precio inválido.';
+        if ($stock === '' || $stock < 0) $errors[] = 'Stock inválido.';
+        if ($category_id === 0)  $errors[] = 'Selecciona una categoría.';
+        if ($supplier_id === 0)  $errors[] = 'Selecciona un proveedor.';
 
-    // New image
-    $has_new_image = isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK;
-    $image_data = null;
-    if ($has_new_image) {
-        $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-        if (!in_array($_FILES['image']['type'], $allowed)) {
-            $errors[] = 'Formato de imagen no válido.';
-            $has_new_image = false;
-        } else {
-            $image_data = file_get_contents($_FILES['image']['tmp_name']);
-        }
-    }
-
-    if (empty($errors)) {
+        // New image
+        $has_new_image = isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK;
+        $image_data = null;
         if ($has_new_image) {
-            $stmt = $mysqli->prepare("UPDATE products SET name=?, description=?, price=?, stock=?, category_id=?, supplier_id=?, image=? WHERE id=?");
-            $null = null;
-            $stmt->bind_param('ssdiiibi', $name, $description, $price, $stock, $category_id, $supplier_id, $null, $id);
-            $stmt->send_long_data(6, $image_data);
-        } else {
-            $stmt = $mysqli->prepare("UPDATE products SET name=?, description=?, price=?, stock=?, category_id=?, supplier_id=? WHERE id=?");
-            $stmt->bind_param('ssdiiii', $name, $description, $price, $stock, $category_id, $supplier_id, $id);
+            $allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+            if (!in_array($_FILES['image']['type'], $allowed)) {
+                $errors[] = 'Formato de imagen no válido.';
+                $has_new_image = false;
+            } else {
+                $image_data = file_get_contents($_FILES['image']['tmp_name']);
+            }
         }
 
-        if ($stmt->execute()) {
-            header('Location: index.php?msg=updated');
-            exit;
-        } else {
-            $errors[] = 'Error al actualizar: ' . $mysqli->error;
+        if (empty($errors)) {
+            if ($has_new_image) {
+                $stmt = $mysqli->prepare("UPDATE products SET name=?, description=?, price=?, stock=?, category_id=?, supplier_id=?, image=? WHERE id=?");
+                $null = null;
+                $stmt->bind_param('ssdiiibi', $name, $description, $price, $stock, $category_id, $supplier_id, $null, $id);
+                $stmt->send_long_data(6, $image_data);
+            } else {
+                $stmt = $mysqli->prepare("UPDATE products SET name=?, description=?, price=?, stock=?, category_id=?, supplier_id=? WHERE id=?");
+                $stmt->bind_param('ssdiiii', $name, $description, $price, $stock, $category_id, $supplier_id, $id);
+            }
+
+            if ($stmt->execute()) {
+                header('Location: index.php?msg=updated');
+                exit;
+            } else {
+                $errors[] = 'Error al actualizar: ' . $mysqli->error;
+            }
+            $stmt->close();
         }
-        $stmt->close();
     }
+}
+
+require '../../layout/admin_header.php';
+
+if (!$prod) {
+    echo '<div class="alert admin-alert alert-danger mt-4">Producto no encontrado.</div>';
+    require '../../layout/admin_footer.php';
+    exit;
 }
 ?>
 

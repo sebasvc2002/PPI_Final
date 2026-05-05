@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Nueva Categoría';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 $errors = [];
 $name = '';
@@ -33,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 }
+
+require '../../layout/admin_header.php';
 ?>
 
 <!-- Page Title -->

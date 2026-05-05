@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Editar Proveedor';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 $errors = [];
 $id = (int)($_GET['id'] ?? 0);
@@ -21,15 +20,10 @@ $stmt->execute();
 $sup = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
-if (!$sup) {
-    echo '<div class="alert admin-alert alert-danger mt-4">Proveedor no encontrado.</div>';
-    require '../../layout/admin_footer.php';
-    exit;
-}
-
-$name         = $sup['name'];
-$contact_name = $sup['contact_name'] ?? '';
-$phone        = $sup['phone'] ?? '';
+if ($sup) {
+    $name         = $sup['name'];
+    $contact_name = $sup['contact_name'] ?? '';
+    $phone        = $sup['phone'] ?? '';
 
 // Update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -50,6 +44,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $stmt->close();
     }
+}
+}
+
+require '../../layout/admin_header.php';
+
+if (!$sup) {
+    echo '<div class="alert admin-alert alert-danger mt-4">Proveedor no encontrado.</div>';
+    require '../../layout/admin_footer.php';
+    exit;
 }
 ?>
 

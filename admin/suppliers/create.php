@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Nuevo Proveedor';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 $errors = [];
 $name         = '';
@@ -35,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
     }
 }
+
+require '../../layout/admin_header.php';
 ?>
 
 <div class="admin-page-title admin-fade-in">

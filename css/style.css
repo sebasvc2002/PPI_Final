@@ -6,6 +6,8 @@
     --bg-color: #FAFAFA;
     /* Off white */
     --text-color: #333333;
+    --card-surface: #ffffff;
+    --text-muted-custom: #888888;
 }
 
 body {

@@ -9,7 +9,6 @@ if(!isset($_SESSION['user_id'])){
 }
 $title = 'Editar Categoría';
 require_once '../../php/db.php';
-require '../../layout/admin_header.php';
 
 $errors = [];
 $id = (int)($_GET['id'] ?? 0);
@@ -21,33 +20,37 @@ $stmt->execute();
 $cat = $stmt->get_result()->fetch_assoc();
 $stmt->close();
 
+if ($cat) {
+    $name        = $cat['name'];
+    $description = $cat['description'] ?? '';
+
+    /* ── Handle UPDATE ─────────────────────────────────────── */
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name        = trim($_POST['name'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+
+        if ($name === '') $errors[] = 'El nombre es obligatorio.';
+
+        if (empty($errors)) {
+            $stmt = $mysqli->prepare("UPDATE categories SET name = ?, description = ? WHERE id = ?");
+            $stmt->bind_param('ssi', $name, $description, $id);
+            if ($stmt->execute()) {
+                header('Location: index.php?msg=updated');
+                exit;
+            } else {
+                $errors[] = 'Error al actualizar: ' . $mysqli->error;
+            }
+            $stmt->close();
+        }
+    }
+}
+
+require '../../layout/admin_header.php';
+
 if (!$cat) {
     echo '<div class="alert admin-alert alert-danger mt-4">Categoría no encontrada.</div>';
     require '../../layout/admin_footer.php';
     exit;
-}
-
-$name        = $cat['name'];
-$description = $cat['description'] ?? '';
-
-/* ── Handle UPDATE ─────────────────────────────────────── */
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name        = trim($_POST['name'] ?? '');
-    $description = trim($_POST['description'] ?? '');
-
-    if ($name === '') $errors[] = 'El nombre es obligatorio.';
-
-    if (empty($errors)) {
-        $stmt = $mysqli->prepare("UPDATE categories SET name = ?, description = ? WHERE id = ?");
-        $stmt->bind_param('ssi', $name, $description, $id);
-        if ($stmt->execute()) {
-            header('Location: index.php?msg=updated');
-            exit;
-        } else {
-            $errors[] = 'Error al actualizar: ' . $mysqli->error;
-        }
-        $stmt->close();
-    }
 }
 ?>
 
