@@ -18,7 +18,7 @@ A full-stack e-commerce web application built with **PHP** and **MySQL** for an 
 * **Category & Supplier Management:** Maintain categories and supplier directories. Prevent deletion of entities linked to active products.
 * **Order Tracking:** View all customer orders including detailed transaction breakdowns.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Backend:** PHP 8+
 * **Database:** MySQL
@@ -26,7 +26,7 @@ A full-stack e-commerce web application built with **PHP** and **MySQL** for an 
 * **Styling Framework:** Bootstrap 5.3.2 (with custom CSS tokens)
 * **Icons:** Bootstrap Icons
 
-## 📁 Project Structure
+## Project Structure
 ```text
 ├── /admin/            # Secure admin panel (CRUD interfaces for products, categories, suppliers)
 ├── /css/              # Custom stylesheets (style.css, admin.css)
