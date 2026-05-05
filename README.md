@@ -13,9 +13,9 @@
 ### Products
 - [x] Mostrar la información de producto seleccionado
 ### Carrito
-- [ ] Mostrar los artículos que el usuario seleccionó del catálogo.
-- [ ] Permitir modificar su selección 
-- [ ] Finalizar compra
+- [x] Mostrar los artículos que el usuario seleccionó del catálogo.
+- [x] Permitir modificar su selección 
+- [x] Finalizar compra
 ### Admin
 - [x] Ver reporte de productos en inventario
 - [x] Agregar nuevos productos
@@ -34,7 +34,7 @@
 ---
 ### Checkout
 - [x] Crear formulario para capturar o seleccionar dirección de envío
-- [ ] Implementar la inserción en las tablas `orders` y `order_details` al conformar la compra
+- [x] Implementar la inserción en las tablas `orders` y `order_details` al conformar la compra
 --- 
 ### Admin
 - [x] Gestión de productos (*CRUD*):
