@@ -1,12 +1,9 @@
-<?php require_once 'php/db.php';
-$result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 5;");
 <?php
 $title="Las delicias Horneadas";
 require_once 'php/db.php';
 require 'layout/header.php';
 
 $result=$mysqli->query("SELECT id, name, price, image FROM `products` ORDER BY id DESC LIMIT 4;");
->>>>>>> Stashed changes
 $products = $result->fetch_all(MYSQLI_ASSOC);
  ?>
     <section class='hero-section'>
