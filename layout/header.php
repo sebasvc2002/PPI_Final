@@ -34,7 +34,10 @@ $cart_count = getCartItemCount($mysqli);
                         <a href="index.php" class="nav-link">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="menu.php">Menú</a>
+                        <a class="nav-link" href="menu.php">Menú</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.php" class="nav-link">Nosotros</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

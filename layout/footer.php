@@ -10,7 +10,8 @@
                 <h5 class="text-uppercase mb-4 font-weight-bold text-accent">Links</h5>
                 <p><a href="index.php" class="text-white text-decoration-none slide-link">Inicio</a></p>
                 <p><a href="menu.php" class="text-white text-decoration-none slide-link">Menu</a></p>
-                <p><a href="cart.php" class="text-white text-decoration-none slide-link">Cart</a></p>
+                <p><a href="cart.php" class="text-white text-decoration-none slide-link">Carrito</a></p>
+                <p><a href="about.php" class="text-white text-decoration-none slide-link">Nosotros</a></p>
             </div>
 
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
@@ -24,21 +25,6 @@
         <div class="row align-items-center">
             <div class="col-md-7 col-lg-8">
                 <p>&copy; 2026 Todos los derechos reservados.</p>
-            </div>
-            <div class="col-md-5 col-lg-4">
-                <div class="text-center text-md-end">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white fs-4"><i class="bi bi-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white fs-4"><i class="bi bi-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white fs-4"><i class="bi bi-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
